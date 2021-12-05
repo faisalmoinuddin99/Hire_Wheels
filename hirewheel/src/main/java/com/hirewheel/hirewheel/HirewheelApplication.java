@@ -5,6 +5,8 @@ import com.hirewheel.hirewheel.entities.Users;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -62,6 +64,10 @@ public class HirewheelApplication {
 		usersDao.findByMobileNumber("8692927930")
 				.forEach(users -> System.out.println(users.getFirstName())); // OUTPUT: Rahul
 
+		// Pagination
+		System.out.println("****************** Finding First Page of the Users *********************");
+		Page<Users> page0 = usersDao.findAll(PageRequest.of(0,2)) ;
+		page0.stream().forEach(users -> System.out.println(users.getFirstName()));
 	}
 
 }
