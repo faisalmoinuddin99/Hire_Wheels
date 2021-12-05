@@ -1,6 +1,7 @@
 package com.hirewheel.hirewheel.entities;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "vehicle_subcategory")
@@ -15,6 +16,14 @@ public class VehicleSubCategory {
 
     @Column(nullable = false)
     private double pricePerDay ;
+
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL},mappedBy = "vehicleSubCategory")
+    private Set<Vehicle> vehicles ;
+
+    @ManyToOne
+    @JoinColumn(name = "vehicleCategoryId", nullable = false)
+    private VehicleCategory vehicleCategory;
 
     public int getVehicleSubcategoryId() {
         return vehicleSubcategoryId;
@@ -40,11 +49,8 @@ public class VehicleSubCategory {
         this.pricePerDay = pricePerDay;
     }
 
-    public VehicleSubCategory(int vehicleSubcategoryId, String vehicleSubcategoryName, double pricePerDay) {
-        this.vehicleSubcategoryId = vehicleSubcategoryId;
-        this.vehicleSubcategoryName = vehicleSubcategoryName;
-        this.pricePerDay = pricePerDay;
-    }
+
+
 
     @Override
     public String toString() {

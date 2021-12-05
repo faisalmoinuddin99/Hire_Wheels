@@ -29,6 +29,19 @@ public class Vehicle {
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy = "vehicleWithBooking")
     private Set<Booking> bookings ;
 
+    @ManyToOne
+    @JoinColumn(name = "fuelTypeId", nullable = false)
+    private FuelType fuelType ;
+
+    @ManyToOne
+    @JoinColumn(name = "locationId", nullable = false)
+    private Location location ;
+
+    @ManyToOne
+    @JoinColumn(name = "vehicleSubcategoryId", nullable = false)
+    private VehicleSubCategory vehicleSubCategory ;
+
+
     public int getVehicleId() {
         return vehicleId;
     }

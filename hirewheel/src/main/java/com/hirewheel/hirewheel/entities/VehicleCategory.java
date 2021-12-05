@@ -1,6 +1,7 @@
 package com.hirewheel.hirewheel.entities;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "vehicle_category")
@@ -12,6 +13,9 @@ public class VehicleCategory {
 
     @Column(nullable = false, unique = true)
     private String vehicleCategoryName ;
+
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.EAGER, mappedBy = "vehicleCategory")
+    private Set<VehicleSubCategory> vehicleSubcategories;
 
     public int getVehicleCategoryId() {
         return vehicleCategoryId;

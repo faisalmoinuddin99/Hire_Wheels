@@ -23,6 +23,13 @@ public class Location {
     @OneToMany(mappedBy = "location",fetch = FetchType.EAGER,cascade = {CascadeType.ALL})
     private Set<Booking> bookings ;
 
+    @ManyToOne
+    @JoinColumn(name = "cityId", nullable = false)
+    private City city ;
+
+    @OneToMany(mappedBy = "location", fetch = FetchType.EAGER, cascade = {CascadeType.ALL})
+    private Set<Vehicle> vehicles ;
+
     public int getLocationId() {
         return locationId;
     }
