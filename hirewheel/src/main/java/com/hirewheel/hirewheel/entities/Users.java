@@ -1,6 +1,7 @@
 package com.hirewheel.hirewheel.entities;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "users")
@@ -27,6 +28,13 @@ public class Users {
 
     @Column(nullable = false)
     private double walletMoney = 10000.00 ;
+
+   @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy = "user")
+   private Set<Booking> bookings ;
+
+   @ManyToOne
+   @JoinColumn(name = "roleId", nullable = false)
+   private Role role ;
 
     public int getUserId() {
         return userId;

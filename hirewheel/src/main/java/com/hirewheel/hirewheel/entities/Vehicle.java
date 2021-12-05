@@ -1,6 +1,7 @@
 package com.hirewheel.hirewheel.entities;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "vehicle")
@@ -24,6 +25,9 @@ public class Vehicle {
 
     @Column(length = 500, nullable = false)
     private String vehicleImageUrl ;
+
+    @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy = "vehicleWithBooking")
+    private Set<Booking> bookings ;
 
     public int getVehicleId() {
         return vehicleId;
@@ -70,6 +74,15 @@ public class Vehicle {
     }
 
     public void setVehicleImageUrl(String vehicleImageUrl) {
+        this.vehicleImageUrl = vehicleImageUrl;
+    }
+
+    public Vehicle(int vehicleId, String vehicleModel, char vehicleNumber, String color, int availabilityStatus, String vehicleImageUrl) {
+        this.vehicleId = vehicleId;
+        this.vehicleModel = vehicleModel;
+        this.vehicleNumber = vehicleNumber;
+        this.color = color;
+        this.availabilityStatus = availabilityStatus;
         this.vehicleImageUrl = vehicleImageUrl;
     }
 

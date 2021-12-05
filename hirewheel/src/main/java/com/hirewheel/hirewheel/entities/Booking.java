@@ -23,6 +23,40 @@ public class Booking {
     @Column(nullable = false)
     private double amount ;
 
+    @ManyToOne
+    @JoinColumn(name = "locationId", nullable = false)
+    private Location location ;
+
+    @ManyToOne
+    @JoinColumn(name = "vehicleId", nullable = false)
+    private Vehicle vehicleWithBooking ;
+
+    @ManyToOne
+    @JoinColumn(name = "userId", nullable = false)
+    private Users user ;
+
+
+    public Location getLocation() {
+        return location;
+    }
+
+
+    @Override
+    public String toString() {
+        return "Booking{" +
+                "bookingId=" + bookingId +
+                ", pickupDate=" + pickupDate +
+                ", dropOffDate=" + dropOffDate +
+                ", bookingDate=" + bookingDate +
+                ", amount=" + amount +
+                ", location=" + location +
+                '}';
+    }
+
+    public void setLocation(Location location) {
+        this.location = location;
+    }
+
     public int getBookingId() {
         return bookingId;
     }
@@ -63,14 +97,4 @@ public class Booking {
         this.amount = amount;
     }
 
-    @Override
-    public String toString() {
-        return "Booking{" +
-                "bookingId=" + bookingId +
-                ", pickupDate=" + pickupDate +
-                ", dropOffDate=" + dropOffDate +
-                ", bookingDate=" + bookingDate +
-                ", amount=" + amount +
-                '}';
-    }
 }

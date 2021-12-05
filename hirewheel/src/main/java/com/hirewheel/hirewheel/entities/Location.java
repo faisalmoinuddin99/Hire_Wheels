@@ -1,6 +1,7 @@
 package com.hirewheel.hirewheel.entities;
 
 import javax.persistence.*;
+import java.util.Set;
 
 @Entity
 @Table(name = "location")
@@ -18,6 +19,9 @@ public class Location {
 
     @Column(nullable = false)
     private char pincode ;
+
+    @OneToMany(mappedBy = "location",fetch = FetchType.EAGER,cascade = {CascadeType.ALL})
+    private Set<Booking> bookings ;
 
     public int getLocationId() {
         return locationId;

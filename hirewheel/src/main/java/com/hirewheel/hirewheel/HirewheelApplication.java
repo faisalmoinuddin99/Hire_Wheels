@@ -1,6 +1,9 @@
 package com.hirewheel.hirewheel;
 
+import com.hirewheel.hirewheel.dao.BookingDao;
 import com.hirewheel.hirewheel.dao.UsersDao;
+import com.hirewheel.hirewheel.entities.Booking;
+import com.hirewheel.hirewheel.entities.Location;
 import com.hirewheel.hirewheel.entities.Users;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
@@ -8,6 +11,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -68,6 +72,15 @@ public class HirewheelApplication {
 		System.out.println("****************** Finding First Page of the Users *********************");
 		Page<Users> page0 = usersDao.findAll(PageRequest.of(0,2)) ;
 		page0.stream().forEach(users -> System.out.println(users.getFirstName()));
+
+		BookingDao bookingDao = context.getBean(BookingDao.class) ;
+
+		Booking booking1 = new Booking() ;
+		booking1.setBookingDate(LocalDateTime.of(2016,3,25,2,31));
+		booking1.setAmount(500.00);
+		booking1.setDropOffDate(LocalDateTime.of(2016,3,25,1,10));
+		booking1.setPickupDate(LocalDateTime.of(2016,3,25,2,31));
+
 	}
 
 }

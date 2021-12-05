@@ -29,6 +29,11 @@ public class VehicleCategory {
         this.vehicleCategoryName = vehicleCategoryName;
     }
 
+    public VehicleCategory(int vehicleCategoryId, String vehicleCategoryName) {
+        this.vehicleCategoryId = vehicleCategoryId;
+        this.vehicleCategoryName = vehicleCategoryName;
+    }
+
     @Override
     public String toString() {
         return "VehicleCategory{" +

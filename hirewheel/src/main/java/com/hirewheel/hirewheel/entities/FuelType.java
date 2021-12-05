@@ -29,6 +29,11 @@ public class FuelType {
         this.fuelType = fuelType;
     }
 
+    public FuelType(int fuelTypeId, String fuelType) {
+        this.fuelTypeId = fuelTypeId;
+        this.fuelType = fuelType;
+    }
+
     @Override
     public String toString() {
         return "FuelType{" +

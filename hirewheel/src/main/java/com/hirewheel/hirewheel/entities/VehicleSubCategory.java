@@ -40,6 +40,12 @@ public class VehicleSubCategory {
         this.pricePerDay = pricePerDay;
     }
 
+    public VehicleSubCategory(int vehicleSubcategoryId, String vehicleSubcategoryName, double pricePerDay) {
+        this.vehicleSubcategoryId = vehicleSubcategoryId;
+        this.vehicleSubcategoryName = vehicleSubcategoryName;
+        this.pricePerDay = pricePerDay;
+    }
+
     @Override
     public String toString() {
         return "VehicleSubCategory{" +
