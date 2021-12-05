@@ -16,14 +16,14 @@ public class Users {
     @Column(nullable = true, length = 20)
     private String lastName ;
 
-    @Column(length = 6, nullable = false)
+    @Column(nullable = false)
     private String password ;
 
     @Column(nullable = false, unique = true)
     private String email ;
 
     @Column(nullable = false, length = 10, unique = true)
-    private int mobileNumber ;
+    private String  mobileNumber ;
 
     @Column(nullable = false)
     private double walletMoney = 10000.00 ;
@@ -68,11 +68,11 @@ public class Users {
         this.email = email;
     }
 
-    public int getMobileNumber() {
+    public String getMobileNumber() {
         return mobileNumber;
     }
 
-    public void setMobileNumber(int mobileNumber) {
+    public void setMobileNumber(String mobileNumber) {
         this.mobileNumber = mobileNumber;
     }
 
