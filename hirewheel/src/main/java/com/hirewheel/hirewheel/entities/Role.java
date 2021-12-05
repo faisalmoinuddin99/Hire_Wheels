@@ -11,11 +11,21 @@ public class Role {
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int roleId ;
 
-    @Column(nullable = false, unique = true)
+    @Column(nullable = false, unique = true, length = 50)
     private String roleName ;
 
     @OneToMany(fetch = FetchType.EAGER, cascade = {CascadeType.ALL}, mappedBy = "role")
     private Set<Users> userList ;
+
+    public Role() {
+
+
+    }
+
+    public Role(int roleId, String roleName) {
+        this.roleId = roleId;
+        this.roleName = roleName;
+    }
 
 
     public int getRoleId() {
@@ -34,10 +44,6 @@ public class Role {
         this.roleName = roleName;
     }
 
-    public Role(int roleId, String roleName) {
-        this.roleId = roleId;
-        this.roleName = roleName;
-    }
 
     @Override
     public String toString() {

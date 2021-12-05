@@ -25,6 +25,8 @@ public class VehicleSubCategory {
     @JoinColumn(name = "vehicleCategoryId", nullable = false)
     private VehicleCategory vehicleCategory;
 
+
+
     public int getVehicleSubcategoryId() {
         return vehicleSubcategoryId;
     }

@@ -36,6 +36,21 @@ public class Users {
    @JoinColumn(name = "roleId", nullable = false)
    private Role role ;
 
+   public Users(){
+
+   }
+
+    public Users(String firstName, String lastName, String password, String email, String mobileNumber, double walletMoney, Role role) {
+
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.password = password;
+        this.email = email;
+        this.mobileNumber = mobileNumber;
+        this.walletMoney = walletMoney;
+        this.role = role;
+    }
+
     public int getUserId() {
         return userId;
     }
